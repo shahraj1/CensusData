@@ -1,0 +1,144 @@
+<!--	
+-->
+<html>
+
+<head>
+
+	<title>
+		Mid-Term Project
+	</title>
+	<style>
+	#column{
+		float: left;
+		margin:40px;
+	}
+	#header{
+		position: relative;
+		left: 80px;
+	}
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+	
+		function validateForm(thisForm) {
+
+		   with (thisForm) {
+				  
+			  if (validate_required(txtHouseholdSize, "Household size must be valid and must not be empty") == false)
+				  { txtHouseholdSize.focus(); return false; }  
+				  
+			  if (validate_required(txtIncome, "Household Income must be valid and must not be empty") == false)
+				  { txtHouseholdIncome.focus(); return false; } 
+				  
+			}
+		}
+		
+		function validate_required(field, alerttext) {
+			with(field) { 
+			
+				if (isNaN(value)||value == ""||value < 0) {
+					alert(alerttext);
+					return false;
+
+				}
+			}
+		}
+		
+	</script>
+	
+		<h1 id="header" > Census Calculation Form</h1>
+
+		<ul id = "column">
+			<li><a href="Census_TotalSubmission.php">Total Submissions</a> </li>
+			<li><a href="Census_HouseholdIncome.php">Average Incomes</a> </li>
+			<li><a href="Census_AveragePoverty.php">Average Poverty</a> </li>
+		</ul>
+
+		<form name="CensusForm" action="Census_Submission.php" onsubmit="return validateForm(CensusForm)" method="post">
+		<table id = "column">
+		<tr>
+			<td>
+				Date: 
+			</td>
+			<td>
+				<input type="date" name="txtDate" ><br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				County of Residence: 
+			</td>
+			<td>
+				<select name="optCounty">
+					<optgroup label="Ohio">
+						  <option value="Hamilton">Hamilton</option>
+						  <option value="Butler">Butler</option>
+						  <option value="Clermont">Clermont</option>
+						  <option value="Warren">Warren</option>
+					 </optgroup>
+					 <optgroup label="Kentucky">
+						  <option value="Boone">Boone</option>
+						  <option value="Campbell">Campbell</option>
+						  <option value="Kenton">Kenton</option>							 
+					 </optgroup>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Household Size: 
+			</td>
+			<td>
+				<input type="number" min="1" name="txtHouseholdSize" size="20" maxlength="50">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Annual Income: 
+			</td>
+			<td>
+				<input type="number" min="0" name="txtHouseholdIncome" size="20" maxlength="50" ><br>
+			</td>
+		</tr>
+
+		<tr>
+			<td align="right">
+				<input type="reset">
+			</td>
+			<td>
+				<input type="submit">
+			</td>
+		</tr>
+
+
+
+		</table>
+
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
